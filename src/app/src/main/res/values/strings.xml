@@ -7,4 +7,20 @@
     <string name="reset">Reset</string>
     <string name="cancel">Annuler</string>
 
+    <string name="libelle">Libellé</string>
+    <string name="quantite">Quantité</string>
+    <string name="ingredients">Ingrédients</string>
+    <string name="lien">Lien</string>
+    <string name="energie">Énergie</string>
+    <string name="fibre">Fibre</string>
+    <string name="matieresGrasses">Matières grasses</string>
+    <string name="acidesGras">Acides gras</string>
+    <string name="glucides">Glucides</string>
+    <string name="sucres">Sucres</string>
+    <string name="sel">Sel</string>
+    <string name="sodium">Sodium</string>
+    <string name="proteine">Protéine</string>
+    <string name="codeEmballeur">Code emballeur</string>
+    <string name="nutriScore">Nutriscore</string>
+    <string name="nova">Nova</string>
 </resources>
