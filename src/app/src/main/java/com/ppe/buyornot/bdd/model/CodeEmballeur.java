@@ -1,12 +1,19 @@
 package com.ppe.buyornot.bdd.model;
 
-public class CodeEmballeur {
+import android.database.Cursor;
+
+public class CodeEmballeur implements IEntity{
 
     private int id;
     private String libelle;
     private Produit produit;
 
     public CodeEmballeur() {
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
+
     }
 
     public int getId() {

@@ -1,8 +1,10 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.database.Cursor;
+
 import java.util.List;
 
-public class Produit {
+public class Produit implements IEntity{
     private int id;
     private String libelle;
     private String ingredient;
@@ -32,6 +34,11 @@ public class Produit {
     private List<Allergene> allergenes;
 
     public Produit() {
+
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
 
     }
 

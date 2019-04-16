@@ -1,8 +1,12 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.database.Cursor;
+
+import com.ppe.buyornot.bdd.dao.PaysDao;
+
 import java.util.List;
 
-public class Pays {
+public class Pays implements IEntity {
 
     private int code;
     private String libelle;
@@ -10,6 +14,12 @@ public class Pays {
 
     public Pays(){
 
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
+        code = cursor.getInt(cursor.getColumnIndex(PaysDao.FIELD_ID));
+        libelle = cursor.getString(cursor.getColumnIndex(PaysDao.FIELD_LIBELLE));
     }
 
     public int getCode() {

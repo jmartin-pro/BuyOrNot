@@ -1,12 +1,19 @@
 package com.ppe.buyornot.bdd.model;
 
-public class Nova {
+import android.database.Cursor;
+
+public class Nova implements IEntity {
 
     private int id;
     private String libelle;
     private Produit produit;
 
     public Nova() {
+
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
 
     }
 

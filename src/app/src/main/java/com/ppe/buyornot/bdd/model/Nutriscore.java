@@ -1,12 +1,19 @@
 package com.ppe.buyornot.bdd.model;
 
-public class Nutriscore {
+import android.database.Cursor;
+
+public class Nutriscore implements IEntity {
 
     private String code;
     private String libelle;
     private Produit produit;
 
     public Nutriscore(){
+
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
 
     }
 

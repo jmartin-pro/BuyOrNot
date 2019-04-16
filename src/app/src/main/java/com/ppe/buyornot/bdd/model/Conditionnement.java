@@ -1,14 +1,21 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.database.Cursor;
+
 import java.util.List;
 
-public class Conditionnement {
+public class Conditionnement implements IEntity {
 
     private int code;
     private String libelle;
     private List<Produit> produits;
 
     public Conditionnement() {
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
+
     }
 
     public int getCode() {

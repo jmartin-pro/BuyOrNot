@@ -1,14 +1,21 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.database.Cursor;
+
 import java.util.List;
 
-public class Additif {
+public class Additif implements IEntity {
 
     private int id;
     private String libelle;
     private List<Produit> produits;
 
     public Additif() {
+
+    }
+
+    @Override
+    public void createFromCursor(Cursor cursor) {
 
     }
 
@@ -35,4 +42,5 @@ public class Additif {
     public void setProduits(List<Produit> produits) {
         this.produits = produits;
     }
+
 }
