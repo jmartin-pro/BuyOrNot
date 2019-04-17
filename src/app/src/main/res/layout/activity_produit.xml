@@ -34,7 +34,8 @@
                     android:id="@+id/quantite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/quantite" />
+                    android:hint="@string/quantite"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -75,7 +76,8 @@
                     android:id="@+id/energie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/energie" />
+                    android:hint="@string/energie"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -87,7 +89,8 @@
                     android:id="@+id/fibre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/fibre" />
+                    android:hint="@string/fibre"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -105,7 +108,8 @@
                     android:id="@+id/matieresGrasses"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/matieresGrasses" />
+                    android:hint="@string/matieresGrasses"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -117,7 +121,8 @@
                     android:id="@+id/acidesGras"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/acidesGras" />
+                    android:hint="@string/acidesGras"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -135,7 +140,8 @@
                     android:id="@+id/glucides"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/glucides" />
+                    android:hint="@string/glucides"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -147,7 +153,8 @@
                     android:id="@+id/sucres"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/sucres" />
+                    android:hint="@string/sucres"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -165,7 +172,8 @@
                     android:id="@+id/sel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/sel" />
+                    android:hint="@string/sel"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -177,7 +185,8 @@
                     android:id="@+id/sodium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/sodium" />
+                    android:hint="@string/sodium"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -189,7 +198,8 @@
                 android:id="@+id/proteine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/proteine" />
+                android:hint="@string/proteine"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -208,17 +218,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/nutriScore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nutriScore" />
-            </android.support.design.widget.TextInputLayout>
+            <ImageView
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:id="@+id/nutriscore"
+                android:layout_weight="1"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
