@@ -4,40 +4,40 @@ import android.database.Cursor;
 
 public class Nova implements IEntity {
 
-    private int id;
-    private String libelle;
-    private Produit produit;
+	private int id;
+	private String libelle;
+	private Produit produit;
 
-    public Nova() {
+	public Nova() {
 
-    }
+	}
 
-    @Override
-    public void createFromCursor(Cursor cursor) {
+	@Override
+	public void createFromCursor(Cursor cursor) {
 
-    }
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getLibelle() {
-        return libelle;
-    }
+	public String getLibelle() {
+		return libelle;
+	}
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
 
-    public Produit getProduit() {
-        return produit;
-    }
+	public Produit getProduit() {
+		return produit;
+	}
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
-    }
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
 }

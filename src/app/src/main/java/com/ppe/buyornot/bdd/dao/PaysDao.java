@@ -13,80 +13,78 @@ import java.util.List;
 
 
 public class PaysDao implements IEntityManager<Pays> {
-    private static final String TABLE_NAME = "PAYS";
+	public static final String FIELD_ID = "PAY_CODE";
+	public static final String FIELD_LIBELLE = "PAY_LIBELLE";
+	private static final String TABLE_NAME = "PAYS";
+	private BuyOrNotDatabase buyOrNotDatabase;
+	private SQLiteDatabase db;
 
-    public static final String FIELD_ID = "PAY_CODE";
-    public static final String FIELD_LIBELLE = "PAY_LIBELLE";
+	public PaysDao(Context context) {
+		buyOrNotDatabase = BuyOrNotDatabase.getInstance(context);
+		this.open();
+	}
 
-    private BuyOrNotDatabase buyOrNotDatabase;
-    private SQLiteDatabase db;
+	public void open() {
+		db = buyOrNotDatabase.getWritableDatabase();
+	}
 
-    public PaysDao(Context context) {
-        buyOrNotDatabase = BuyOrNotDatabase.getInstance(context);
-        this.open();
-    }
+	public void close() {
+		db.close();
+	}
 
-    public void open() {
-        db = buyOrNotDatabase.getWritableDatabase();
-    }
+	public List<Pays> getAll() {
+		List<Pays> pays = new ArrayList<>();
 
-    public void close() {
-        db.close();
-    }
+		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+		while (c.moveToNext()) {
+			Pays p = new Pays();
+			p.createFromCursor(c);
 
-    public List<Pays> getAll() {
-        List<Pays> pays = new ArrayList<>();
+			pays.add(p);
+		}
 
-        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME, null);
-        while(c.moveToNext()) {
-            Pays p = new Pays();
-            p.createFromCursor(c);
+		return pays;
+	}
 
-            pays.add(p);
-        }
+	public Pays get(int id) {
+		Pays p = new Pays();
 
-        return pays;
-    }
+		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + FIELD_ID + "=" + id, null);
+		if (c.moveToFirst()) {
+			p.createFromCursor(c);
+			c.close();
+		}
 
-    public Pays get(int id) {
-        Pays p = new Pays();
+		return p;
+	}
 
-        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+FIELD_ID+"="+id, null);
-        if (c.moveToFirst()) {
-            p.createFromCursor(c);
-            c.close();
-        }
+	public long add(Pays pays) {
+		ContentValues values = fillContentValues(pays);
 
-        return p;
-    }
+		return db.insert(TABLE_NAME, null, values);
+	}
 
-    public long add(Pays pays) {
-        ContentValues values = fillContentValues(pays);
+	public int update(Pays pays) {
+		ContentValues values = fillContentValues(pays);
 
-        return db.insert(TABLE_NAME, null, values);
-    }
+		String where = FIELD_ID + " = ?";
+		String[] whereArgs = {"" + pays.getCode()};
 
-    public int update(Pays pays) {
-        ContentValues values = fillContentValues(pays);
+		return db.update(TABLE_NAME, values, where, whereArgs);
+	}
 
-        String where = FIELD_ID +" = ?";
-        String[] whereArgs = {""+pays.getCode()};
+	public void delete(int id) {
+		String where = FIELD_ID + " = ?";
+		String[] whereArgs = {"" + id};
 
-        return db.update(TABLE_NAME, values, where, whereArgs);
-    }
+		db.delete(TABLE_NAME, where, whereArgs);
+	}
 
-    public void delete(int id) {
-        String where = FIELD_ID +" = ?";
-        String[] whereArgs = {""+id};
+	public ContentValues fillContentValues(Pays pays) {
+		ContentValues contentValues = new ContentValues();
 
-        db.delete(TABLE_NAME, where, whereArgs);
-    }
+		contentValues.put(FIELD_LIBELLE, pays.getLibelle());
 
-    public ContentValues fillContentValues(Pays pays) {
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(FIELD_LIBELLE, pays.getLibelle());
-
-        return contentValues;
-    }
+		return contentValues;
+	}
 }

@@ -40,7 +40,7 @@ public class ProduitRecyclerAdapter extends RecyclerView.Adapter<ProduitRecycler
 		viewHolder.textViewLibelle.setText(p.getLibelle());
 
 		String nutriscore = p.getNutriscore().getCode();
-		int nutriscorerawableId = context.getResources().getIdentifier("nutriscore_"+nutriscore.toLowerCase(), "drawable", context.getPackageName());
+		int nutriscorerawableId = context.getResources().getIdentifier("nutriscore_" + nutriscore.toLowerCase(), "drawable", context.getPackageName());
 		viewHolder.imageViewNutriscore.setImageDrawable(context.getResources().getDrawable(nutriscorerawableId));
 	}
 

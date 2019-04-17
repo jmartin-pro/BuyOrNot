@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface IEntityManager<T extends IEntity> {
 
-    List<T> getAll();
+	List<T> getAll();
 
-    T get(int id);
+	T get(int id);
 
-    long add(T entity);
+	long add(T entity);
 
-    int update(T entity);
+	int update(T entity);
 
-    void delete(int id);
+	void delete(int id);
 
-    public ContentValues fillContentValues(T entity);
+	public ContentValues fillContentValues(T entity);
 }
