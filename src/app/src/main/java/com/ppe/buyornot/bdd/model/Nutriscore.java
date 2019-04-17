@@ -12,7 +12,11 @@ public class Nutriscore implements IEntity {
 
     }
 
-    @Override
+	public Nutriscore(String code) {
+        this.code = code;
+	}
+
+	@Override
     public void createFromCursor(Cursor cursor) {
 
     }

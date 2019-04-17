@@ -2,6 +2,8 @@ package com.ppe.buyornot.bdd.model;
 
 import android.database.Cursor;
 
+import com.ppe.buyornot.bdd.dao.ProduitDao;
+
 import java.util.List;
 
 public class Produit implements IEntity{
@@ -39,7 +41,22 @@ public class Produit implements IEntity{
 
     @Override
     public void createFromCursor(Cursor cursor) {
+        this.id = cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID));
+        this.libelle = cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_LIBELLE));
+        this.ingredient = cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_INGREDIENT));
+        this.lien = cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_LIEN));
+        this.quantite = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_QUANTITE));
+        this.energie = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_ENERGIE));
+        this.matiereGrasse = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_MATIERE_GRASSE));
+        this.acideGras = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_ACIDE_GRAS));
+        this.glucide = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_GLUCIDE));
+        this.sucre = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SUCRE));
+        this.fibre = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_FIBRE));
+        this.proteine = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_PROTEINE));
+        this.sel = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SEL));
+        this.sodium = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SODIUM));
 
+        this.nutriscore = new Nutriscore(cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_ID_NUTRISCORE)));
     }
 
     public int getId() {

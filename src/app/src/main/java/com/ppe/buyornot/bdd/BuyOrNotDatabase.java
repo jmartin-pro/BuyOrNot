@@ -48,16 +48,13 @@ public class BuyOrNotDatabase extends SQLiteOpenHelper {
 			execFile(sqLiteDatabase, "2_data.sql");
 			oldVersion++;
 		}
-
-		System.out.println("Yeah!");
-
     }
 
     private void execFile(SQLiteDatabase sqLiteDatabase, String path) {
         BufferedReader input = null;
         StringBuilder fileContent = new StringBuilder();
         try {
-            input = new BufferedReader(new InputStreamReader(context.getAssets().open(path)));
+            input = new BufferedReader(new InputStreamReader(this.context.getAssets().open(path)));
 
             String line;
             while ((line = input.readLine()) != null) {

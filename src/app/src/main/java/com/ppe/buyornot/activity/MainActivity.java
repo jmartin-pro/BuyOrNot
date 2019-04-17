@@ -3,27 +3,34 @@ package com.ppe.buyornot.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.ppe.buyornot.ProduitRecyclerAdapter;
 import com.ppe.buyornot.R;
 import com.ppe.buyornot.bdd.dao.PaysDao;
+import com.ppe.buyornot.bdd.dao.ProduitDao;
 import com.ppe.buyornot.bdd.model.Pays;
 
 public class MainActivity extends AppCompatActivity {
+
+	private RecyclerView recyclerView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		PaysDao paysDao = new PaysDao(this);
-		for(Pays p : paysDao.getAll()) {
-			System.out.println(p.getLibelle());
-		}
+		this.recyclerView = findViewById(R.id.recyclerViewProduits);
 
-		paysDao.close();
+		ProduitDao produitDao = new ProduitDao(this);
+
+		ProduitRecyclerAdapter adapter = new ProduitRecyclerAdapter(produitDao.getAll(), this);
+		this.recyclerView.setAdapter(adapter);
+		this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 	}
 
 	@Override
