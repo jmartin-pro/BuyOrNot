@@ -1,4 +1,4 @@
-package com.ppe.buyornot;
+package com.ppe.buyornot.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ppe.buyornot.R;
 import com.ppe.buyornot.bdd.model.Produit;
 
 import java.util.List;
@@ -17,10 +18,12 @@ public class ProduitRecyclerAdapter extends RecyclerView.Adapter<ProduitRecycler
 
 	private Context context;
 	private List<Produit> produits;
+	private View.OnClickListener rowClickLister;
 
-	public ProduitRecyclerAdapter(List<Produit> produits, Context context) {
+	public ProduitRecyclerAdapter(List<Produit> produits, View.OnClickListener rowClickListener, Context context) {
 		this.produits = produits;
 		this.context = context;
+		this.rowClickLister = rowClickListener;
 	}
 
 	@NonNull
@@ -29,6 +32,8 @@ public class ProduitRecyclerAdapter extends RecyclerView.Adapter<ProduitRecycler
 		LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 
 		View row = inflater.inflate(R.layout.row_produit, viewGroup, false);
+
+		row.setOnClickListener(this.rowClickLister);
 
 		return new ViewHolder(row);
 	}
