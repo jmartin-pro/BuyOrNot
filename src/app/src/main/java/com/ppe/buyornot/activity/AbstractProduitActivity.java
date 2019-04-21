@@ -59,7 +59,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		for(Nova n : this.novas)
 			novasStr.add(n.getLibelle());
 
-		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, novasStr);
+		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, novasStr);
 		novaDao.close();
 
 		spinnerNova.setAdapter(novaAdapter);
