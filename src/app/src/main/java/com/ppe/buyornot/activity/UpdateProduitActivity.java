@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
+
 import com.ppe.buyornot.bdd.dao.ProduitDao;
 import com.ppe.buyornot.bdd.model.Produit;
 
@@ -55,10 +57,6 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 			}
 		}
 
-		String nutriscore = produit.getNutriscore().getCode();
-		int nutriscorerawableId = this.getResources().getIdentifier("nutriscore_" + nutriscore.toLowerCase(), "drawable", this.getPackageName());
-		this.imageViewNutriscore.setImageDrawable(this.getResources().getDrawable(nutriscorerawableId));
-
 		this.buttonDelete.setOnClickListener(new DeleteProduitOnClickListener());
 	}
 
@@ -67,6 +65,11 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 		ProduitDao produitDao = new ProduitDao(this);
 
 		Produit produit = this.getProduit();
+		if(produit == null) {
+			Toast.makeText(this, "Tous les champs doivent être remplis!", Toast.LENGTH_LONG).show();
+			return;
+		}
+
 		produit.setId(this.produitId);
 
 		produitDao.update(produit);

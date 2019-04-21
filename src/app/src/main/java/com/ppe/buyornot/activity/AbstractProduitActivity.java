@@ -41,7 +41,6 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 	protected EditText editTextSodium;
 	protected EditText editTextProteine;
 	protected EditText editTextCodeEmballeur;
-	protected ImageView imageViewNutriscore;
 	protected Spinner spinnerNova;
 
 	protected List<Nova> novas;
@@ -82,11 +81,28 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		this.editTextSodium = findViewById(R.id.sodium);
 		this.editTextProteine = findViewById(R.id.proteine);
 		this.editTextCodeEmballeur = findViewById(R.id.codeEmballeur);
-		this.imageViewNutriscore = findViewById(R.id.nutriscore);
 		this.spinnerNova = findViewById(R.id.nova);
 	}
 
 	protected Produit getProduit() {
+		if(this.editTextLibelle.getText().toString().isEmpty() ||
+			this.editTextQuantite.getText().toString().isEmpty() ||
+			this.editTextIngredients.getText().toString().isEmpty() ||
+			this.editTextLien.getText().toString().isEmpty() ||
+			this.editTextEnergie.getText().toString().isEmpty() ||
+			this.editTextFibre.getText().toString().isEmpty() ||
+			this.editTextMatieresGrasses.getText().toString().isEmpty() ||
+			this.editTextAcidesGras.getText().toString().isEmpty() ||
+			this.editTextGlucides.getText().toString().isEmpty() ||
+			this.editTextSucres.getText().toString().isEmpty() ||
+			this.editTextSel.getText().toString().isEmpty() ||
+			this.editTextSodium.getText().toString().isEmpty() ||
+			this.editTextProteine.getText().toString().isEmpty() ||
+			this.editTextCodeEmballeur.getText().toString().isEmpty()) {
+
+			return null;
+		}
+
 		Produit produit = new Produit();
 
 		produit.setLibelle(editTextLibelle.getText().toString());

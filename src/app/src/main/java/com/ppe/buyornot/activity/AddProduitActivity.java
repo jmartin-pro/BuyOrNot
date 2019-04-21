@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ppe.buyornot.bdd.dao.ProduitDao;
+import com.ppe.buyornot.bdd.model.Produit;
 
 public class AddProduitActivity extends AbstractProduitActivity {
 
@@ -19,8 +21,15 @@ public class AddProduitActivity extends AbstractProduitActivity {
 
 	@Override
 	protected void saveProduit() {
+		Produit produit = this.getProduit();
+
+		if(produit == null) {
+			Toast.makeText(this, "Tous les champs doivent être remplis!", Toast.LENGTH_LONG).show();
+			return;
+		}
+
 		ProduitDao produitDao = new ProduitDao(this);
-		produitDao.add(this.getProduit());
+		produitDao.add(produit);
 		produitDao.close();
 
 		Intent returnIntent = new Intent();
