@@ -33,8 +33,8 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 	private void updateUi(Produit produit) {
 		editTextLibelle.setText(produit.getLibelle());
 		this.editTextQuantite.setText(""+produit.getQuantite());
-		this.editTextIngredients.setText(""+produit.getIngredient());
-		this.editTextLien.setText(""+produit.getLien());
+		this.editTextIngredients.setText((produit.getIngredient() != null) ? ""+produit.getIngredient() : "");
+		this.editTextLien.setText((produit.getLien() != null) ? ""+produit.getLien() : "");
 		this.editTextEnergie.setText(""+produit.getEnergie());
 		this.editTextFibre.setText(""+produit.getFibre());
 		this.editTextMatieresGrasses.setText(""+produit.getMatiereGrasse());
@@ -44,7 +44,7 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 		this.editTextSel.setText(""+produit.getSel());
 		this.editTextSodium.setText(""+produit.getSodium());
 		this.editTextProteine.setText(""+produit.getProteine());
-		this.editTextCodeEmballeur.setText(""+produit.getCodeEmballeur());
+		this.editTextCodeEmballeur.setText((produit.getCodeEmballeur() != null) ? ""+produit.getCodeEmballeur() : "");
 
 		String nutriscore = produit.getNutriscore().getCode();
 		int nutriscorerawableId = this.getResources().getIdentifier("nutriscore_" + nutriscore.toLowerCase(), "drawable", this.getPackageName());
