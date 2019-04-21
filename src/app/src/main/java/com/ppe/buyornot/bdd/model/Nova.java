@@ -12,6 +12,10 @@ public class Nova implements IEntity {
 
 	}
 
+	public Nova(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public void createFromCursor(Cursor cursor) {
 

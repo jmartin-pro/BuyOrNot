@@ -274,4 +274,7 @@ public class Produit implements IEntity {
 	public void setAllergenes(List<Allergene> allergenes) {
 		this.allergenes = allergenes;
 	}
+
+	public void updateNutriscore() {
+	}
 }

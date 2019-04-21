@@ -125,6 +125,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 		contentValues.put(FIELD_FIBRE, produit.getFibre());
 		contentValues.put(FIELD_PROTEINE, produit.getProteine());
 		contentValues.put(FIELD_SEL, produit.getSel());
+		contentValues.put(FIELD_SODIUM, produit.getSodium());
 
 		return contentValues;
 	}

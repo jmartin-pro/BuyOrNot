@@ -21,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 	public static final int ACTIVITY_CODE_UDPATE_PRODUIT = 1;
+	public static final int ACTIVITY_CODE_ADD_PRODUIT = 2;
 
 	private RecyclerView recyclerView;
 	private List<Produit> produits;
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
 			if (resultCode == RESULT_OK) {
 				this.updateRecyclerView();
 			}
+		} else if (requestCode == ACTIVITY_CODE_ADD_PRODUIT) {
+			if (resultCode == RESULT_OK) {
+				this.updateRecyclerView();
+			}
 		}
 	}
 
@@ -67,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 		switch (item.getItemId()) {
 			case R.id.action_add:
 				Intent intent = new Intent(MainActivity.this, AddProduitActivity.class);
-				startActivity(intent);
+				startActivityForResult(intent, ACTIVITY_CODE_ADD_PRODUIT);
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
