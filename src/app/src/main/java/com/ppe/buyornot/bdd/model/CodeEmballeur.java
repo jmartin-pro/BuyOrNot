@@ -1,5 +1,6 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
 import android.database.Cursor;
 
 public class CodeEmballeur implements IEntity {
@@ -12,7 +13,7 @@ public class CodeEmballeur implements IEntity {
 	}
 
 	@Override
-	public void createFromCursor(Cursor cursor) {
+	public void createFromCursor(Cursor cursor, Context context) {
 
 	}
 

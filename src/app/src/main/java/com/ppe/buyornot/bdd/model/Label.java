@@ -1,14 +1,22 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
+import android.database.Cursor;
+
 import java.util.List;
 
-public class Label {
+public class Label implements IEntity {
 
 	private int code;
 	private String libelle;
 	private List<Produit> produits;
 
 	public Label() {
+
+	}
+
+	@Override
+	public void createFromCursor(Cursor cursor, Context context) {
 
 	}
 

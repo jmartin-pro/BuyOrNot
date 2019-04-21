@@ -1,14 +1,22 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
+import android.database.Cursor;
+
 import java.util.List;
 
-public class Magasin {
+public class Magasin implements IEntity {
 
 	private int code;
 	private String libelle;
 	private List<Produit> produits;
 
 	public Magasin() {
+
+	}
+
+	@Override
+	public void createFromCursor(Cursor cursor, Context context) {
 
 	}
 

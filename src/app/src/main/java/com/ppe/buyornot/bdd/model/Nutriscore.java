@@ -1,5 +1,6 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
 import android.database.Cursor;
 
 public class Nutriscore implements IEntity {
@@ -17,7 +18,7 @@ public class Nutriscore implements IEntity {
 	}
 
 	@Override
-	public void createFromCursor(Cursor cursor) {
+	public void createFromCursor(Cursor cursor, Context context) {
 
 	}
 

@@ -1,7 +1,9 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
 import android.database.Cursor;
 
+import com.ppe.buyornot.bdd.dao.NovaDao;
 import com.ppe.buyornot.bdd.dao.ProduitDao;
 
 import java.util.List;
@@ -40,7 +42,7 @@ public class Produit implements IEntity {
 	}
 
 	@Override
-	public void createFromCursor(Cursor cursor) {
+	public void createFromCursor(Cursor cursor, Context context) {
 		this.id = cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID));
 		this.libelle = cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_LIBELLE));
 		this.ingredient = cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_INGREDIENT));
@@ -57,6 +59,10 @@ public class Produit implements IEntity {
 		this.sodium = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SODIUM));
 
 		this.nutriscore = new Nutriscore(cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_ID_NUTRISCORE)));
+
+		NovaDao novaDao = new NovaDao(context);
+		this.nova = novaDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_NOVA)));
+		novaDao.close();
 	}
 
 	public int getId() {

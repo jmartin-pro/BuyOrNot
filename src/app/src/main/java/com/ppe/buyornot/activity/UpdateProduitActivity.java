@@ -46,6 +46,15 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 		this.editTextProteine.setText(""+produit.getProteine());
 		this.editTextCodeEmballeur.setText((produit.getCodeEmballeur() != null) ? ""+produit.getCodeEmballeur() : "");
 
+
+		for(int i = 0 ; i < this.novas.size() ; i++) {
+			if(this.novas.get(i).getId() == produit.getNova().getId()) {
+				this.spinnerNova.setSelection(i);
+
+				break;
+			}
+		}
+
 		String nutriscore = produit.getNutriscore().getCode();
 		int nutriscorerawableId = this.getResources().getIdentifier("nutriscore_" + nutriscore.toLowerCase(), "drawable", this.getPackageName());
 		this.imageViewNutriscore.setImageDrawable(this.getResources().getDrawable(nutriscorerawableId));

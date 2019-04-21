@@ -7,14 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.ppe.buyornot.R;
+import com.ppe.buyornot.bdd.dao.NovaDao;
 import com.ppe.buyornot.bdd.model.Nova;
 import com.ppe.buyornot.bdd.model.Nutriscore;
 import com.ppe.buyornot.bdd.model.Produit;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractProduitActivity extends AppCompatActivity {
 
@@ -36,7 +42,9 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 	protected EditText editTextProteine;
 	protected EditText editTextCodeEmballeur;
 	protected ImageView imageViewNutriscore;
-	protected EditText editTextNova;
+	protected Spinner spinnerNova;
+
+	protected List<Nova> novas;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +52,18 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_produit);
 
 		findViews();
+
+		NovaDao novaDao = new NovaDao(this);
+		novas = novaDao.getAll();
+
+		List<String> novasStr = new ArrayList<>();
+		for(Nova n : this.novas)
+			novasStr.add(n.getLibelle());
+
+		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, novasStr);
+		novaDao.close();
+
+		spinnerNova.setAdapter(novaAdapter);
 	}
 
 	private void findViews() {
@@ -63,7 +83,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		this.editTextProteine = findViewById(R.id.proteine);
 		this.editTextCodeEmballeur = findViewById(R.id.codeEmballeur);
 		this.imageViewNutriscore = findViewById(R.id.nutriscore);
-		this.editTextNova = findViewById(R.id.nova);
+		this.spinnerNova = findViewById(R.id.nova);
 	}
 
 	protected Produit getProduit() {
@@ -85,8 +105,8 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		//TODO : code emballeur -> produit.setLibelle(Float.parseFloat(editTextLibelle.getText().toString()));
 		produit.updateNutriscore();
 		produit.setNutriscore(new Nutriscore("A"));
-		produit.setNova(new Nova(1));
-		//TODO : nova -> produit.setNova(new Nova(editTextLibelle.getText().toString()));
+
+		produit.setNova(novas.get((int) spinnerNova.getSelectedItemId()));
 
 		return produit;
 	}

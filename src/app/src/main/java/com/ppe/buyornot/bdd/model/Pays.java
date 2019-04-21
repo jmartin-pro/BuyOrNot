@@ -1,5 +1,6 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
 import android.database.Cursor;
 
 import com.ppe.buyornot.bdd.dao.PaysDao;
@@ -17,7 +18,7 @@ public class Pays implements IEntity {
 	}
 
 	@Override
-	public void createFromCursor(Cursor cursor) {
+	public void createFromCursor(Cursor cursor, Context context) {
 		code = cursor.getInt(cursor.getColumnIndex(PaysDao.FIELD_ID));
 		libelle = cursor.getString(cursor.getColumnIndex(PaysDao.FIELD_LIBELLE));
 	}

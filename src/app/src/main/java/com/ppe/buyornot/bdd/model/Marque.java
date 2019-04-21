@@ -1,5 +1,6 @@
 package com.ppe.buyornot.bdd.model;
 
+import android.content.Context;
 import android.database.Cursor;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class Marque implements IEntity {
 	}
 
 	@Override
-	public void createFromCursor(Cursor cursor) {
+	public void createFromCursor(Cursor cursor, Context context) {
 
 	}
 

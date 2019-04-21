@@ -31,12 +31,17 @@ public class ProduitDao implements IEntityManager<Produit> {
 	public static final String FIELD_SEL = "PRO_SEL";
 	public static final String FIELD_SODIUM = "PRO_SODIUM";
 	private static final String TABLE_NAME = "PRODUIT";
+
+	private final Context context;
+
 	private BuyOrNotDatabase buyOrNotDatabase;
 	private SQLiteDatabase db;
 
 	public ProduitDao(Context context) {
 		buyOrNotDatabase = BuyOrNotDatabase.getInstance(context);
 		this.open();
+
+		this.context = context;
 	}
 
 	public void open() {
@@ -53,7 +58,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 		while (c.moveToNext()) {
 			Produit p = new Produit();
-			p.createFromCursor(c);
+			p.createFromCursor(c, this.context);
 
 			produits.add(p);
 		}
@@ -66,7 +71,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 
 		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + FIELD_ID + "=" + id, null);
 		if (c.moveToFirst()) {
-			p.createFromCursor(c);
+			p.createFromCursor(c, this.context);
 			c.close();
 		}
 
