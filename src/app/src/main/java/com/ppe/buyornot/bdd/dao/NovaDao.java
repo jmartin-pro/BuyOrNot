@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ppe.buyornot.bdd.BuyOrNotDatabase;
 import com.ppe.buyornot.bdd.model.Nova;
-import com.ppe.buyornot.bdd.model.Produit;
 
 import java.util.ArrayList;
 import java.util.List;

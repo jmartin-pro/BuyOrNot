@@ -11,8 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ppe.buyornot.adapter.ProduitRecyclerAdapter;
 import com.ppe.buyornot.R;
+import com.ppe.buyornot.adapter.ProduitRecyclerAdapter;
 import com.ppe.buyornot.bdd.dao.ProduitDao;
 import com.ppe.buyornot.bdd.model.Produit;
 
