@@ -3,6 +3,7 @@ package com.ppe.buyornot.bdd.model;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.ppe.buyornot.bdd.dao.CategNutriscoreDao;
 import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
 import com.ppe.buyornot.bdd.dao.NovaDao;
 import com.ppe.buyornot.bdd.dao.ProduitDao;
@@ -36,6 +37,7 @@ public class Produit implements IEntity {
 	private List<Lieu> lieuxFabrication;
 	private Nutriscore nutriscore;
 	private Nova nova;
+	private CategNutriscore categNutriscore;
 	private List<Conditionnement> conditionnements;
 	private List<Allergene> allergenes;
 
@@ -66,6 +68,10 @@ public class Produit implements IEntity {
 		CodeEmballeurDao codeEmballeurDao = new CodeEmballeurDao(context);
 		this.codeEmballeur = codeEmballeurDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_CODE_EMBALLEUR)));
 		codeEmballeurDao.close();
+
+		CategNutriscoreDao categNutriscoreDao = new CategNutriscoreDao(context);
+		this.categNutriscore = categNutriscoreDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_CATEG_NUTRISCORE)));
+		categNutriscoreDao.close();
 
 		NovaDao novaDao = new NovaDao(context);
 		this.nova = novaDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_NOVA)));
@@ -278,6 +284,14 @@ public class Produit implements IEntity {
 
 	public void setNova(Nova nova) {
 		this.nova = nova;
+	}
+
+	public CategNutriscore getCategNutriscore() {
+		return categNutriscore;
+	}
+
+	public void setCategNutriscore(CategNutriscore categNutriscore) {
+		this.categNutriscore = categNutriscore;
 	}
 
 	public List<Conditionnement> getConditionnements() {

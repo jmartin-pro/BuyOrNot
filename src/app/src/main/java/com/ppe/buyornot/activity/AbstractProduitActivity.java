@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.ppe.buyornot.R;
+import com.ppe.buyornot.bdd.dao.CategNutriscoreDao;
 import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
 import com.ppe.buyornot.bdd.dao.NovaDao;
+import com.ppe.buyornot.bdd.model.CategNutriscore;
 import com.ppe.buyornot.bdd.model.CodeEmballeur;
 import com.ppe.buyornot.bdd.model.Nova;
 import com.ppe.buyornot.bdd.model.Nutriscore;
@@ -47,6 +49,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 
 	protected List<Nova> novas;
 	protected List<CodeEmballeur> codeEmballeurs;
+	protected List<CategNutriscore> categNutriscore;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,17 +114,17 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 	}
 
 	private void initCategNutriscore() {
-		/*NovaDao novaDao = new NovaDao(this);
-		this.novas = novaDao.getAll();
+		CategNutriscoreDao categNutriscoreDao = new CategNutriscoreDao(this);
+		this.categNutriscore = categNutriscoreDao.getAll();
 
-		List<String> novasStr = new ArrayList<>();
-		for(Nova n : this.novas)
-			novasStr.add(n.getLibelle());
+		List<String> categNutriscoreStr = new ArrayList<>();
+		for(CategNutriscore cn : this.categNutriscore)
+			categNutriscoreStr.add(cn.getLibelle());
 
-		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, novasStr);
-		novaDao.close();
+		ArrayAdapter<String> categNutriscoreAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categNutriscoreStr);
+		categNutriscoreDao.close();
 
-		spinnerNova.setAdapter(novaAdapter);*/
+		spinnerCategNutriscore.setAdapter(categNutriscoreAdapter);
 	}
 
 	protected Produit getProduit() {
@@ -165,6 +168,8 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		else {
 			produit.setCodeEmballeur(codeEmballeurs.get(spinnerCodeEmballeur.getSelectedItemPosition()-1));
 		}
+
+		produit.setCategNutriscore(categNutriscore.get(spinnerCategNutriscore.getSelectedItemPosition()));
 
 		produit.updateNutriscore();
 		produit.setNutriscore(new Nutriscore("A"));

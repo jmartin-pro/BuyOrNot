@@ -66,6 +66,14 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 			}
 		}
 
+		for(int i = 0 ; i < this.categNutriscore.size() ; i++) {
+			if(this.categNutriscore.get(i).getId() == produit.getCategNutriscore().getId()) {
+				this.spinnerCategNutriscore.setSelection(i);
+
+				break;
+			}
+		}
+
 		this.buttonDelete.setOnClickListener(new DeleteProduitOnClickListener());
 	}
 

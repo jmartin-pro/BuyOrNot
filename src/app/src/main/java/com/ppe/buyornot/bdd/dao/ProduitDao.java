@@ -31,6 +31,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 	public static final String FIELD_SEL = "PRO_SEL";
 	public static final String FIELD_SODIUM = "PRO_SODIUM";
 	public static final String FIELD_FRUITS = "PRO_FRUIT";
+	public static final String FIELD_ID_CATEG_NUTRISCORE = "PROD_ID_CATEG_NUTRISCORE";
 	private static final String TABLE_NAME = "PRODUIT";
 
 	private final Context context;
@@ -123,6 +124,11 @@ public class ProduitDao implements IEntityManager<Produit> {
 			contentValues.put(FIELD_ID_NUTRISCORE, produit.getNutriscore().getCode());
 		else
 			contentValues.putNull(FIELD_ID_NUTRISCORE);
+
+		if (produit.getCategNutriscore() != null)
+			contentValues.put(FIELD_ID_CATEG_NUTRISCORE, produit.getCategNutriscore().getId());
+		else
+			contentValues.putNull(FIELD_ID_CATEG_NUTRISCORE);
 
 		contentValues.put(FIELD_INGREDIENT, produit.getIngredient());
 		contentValues.put(FIELD_LIEN, produit.getLien());
