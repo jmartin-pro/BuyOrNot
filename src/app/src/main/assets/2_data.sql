@@ -210,19 +210,26 @@ INSERT INTO PAYS (PAY_CODE, PAY_LIBELLE) VALUES
 (8, 'Irlande'),
 (9, 'Espagne');
 
-INSERT INTO PRODUIT (PRO_ID, PRO_LIBELLE, COD_ID, NOVA_ID, NUT_CODE, PRO_INGREDIENT, PRO_LIEN, PRO_QUANTITE, PRO_ENERGIE, PRO_MATIEREGRASSE, PRO_ACIDEGRAS, PRO_GLUCIDE, PRO_SUCRE, PRO_FIBRE, PRO_PROTEINE, PRO_SEL, PRO_SODIUM) VALUES
-(1, 'Teurgoule de la Sée', NULL, 1, 'B', NULL, 'https://fr.openfoodfacts.org/produit/3488790000214/teurgoule-de-la-see-fabriquee-a-la-ferme-du-gaec-muris', 440, 122, '3.500', '2.30', '18.30', '0.00', '0.00', '3.90', '0.04', '0.02'),
-(2, 'Nutella', NULL, 4, 'E', 'Sucre, huile de palme, noisettes 13%, cacao maigre 7,4%, lait écrémé en poudre 6,6%, lactoserum en poudre, émulsifiants : lécithines [soja], vanilline.', 'https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero', 750, 544, '31.600', '11.00', '57.60', '56.80', '0.00', '6.30', '0.11', '0.04'),
-(3, 'La classique nature', NULL, 3, 'D', 'Pommes de terre, huile de tournesol, sel', 'https://fr.openfoodfacts.org/produit/3336971209164/la-classique-nature-135-g-vico', 135, 525, '34.000', '2.80', '46.70', '0.60', '0.00', '5.90', '1.30', '0.51'),
-(4, 'Dolce Pizza Regina', NULL, 4, 'C', 'Garniture 60 % : mozzarella en copeaux 28 %, sauce tomate 27 % (purée de tomate, eau, farine de blé, sel), chiffonnade de jambon cuit 22 % (jambon de porc, eau, sel, dextrose, sirop de glucose, stabilisant : E451, arômes naturels (dont gluten), gélifiant ', 'https://fr.openfoodfacts.org/produit/3242272340850/dolce-pizza-regina-sodebo', 380, 181, '4.600', '2.90', '22.20', '2.10', '0.00', '10.90', '1.46', '0.58'),
-(5, 'Poulet Fermier Label Rouge de Loué', 1, 1, 'B', 'Poulet fermier 100%', 'https://fr.openfoodfacts.org/produit/0217013081678/poulet-fermier-label-rouge-de-loue', 1448, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Camembert de Normandie', 2, 3, 'D', 'lait cru', 'https://fr.openfoodfacts.org/produit/3023260028437/camembert-de-normandie-22-mg-jort', 250, 277, '21.000', '15.50', '0.00', '0.00', NULL, '20.00', '1.55', '0.61'),
-(7, 'Riz Jasmin Extra Parfumé', NULL, 1, 'A', 'Riz Thaï', 'https://fr.openfoodfacts.org/produit/3364699010434/riz-jasmin-extra-parfume-oiseaux-celestes', 1000, 338, '0.900', '0.40', '76.00', '0.00', '2.90', '6.60', '0.00', '0.00'),
-(8, 'Tagliatelles', NULL, 3, 'A', '\r\nSemoule de blé dur, œufs (19,36 %).', 'https://fr.openfoodfacts.org/produit/8076808201293/tagliatelles-barilla', 500, 373, '4.000', '1.00', '66.00', '3.00', '4.00', '14.00', '0.00', '0.00'),
-(9, 'Eau de source Cristaline', 3, 1, 'A', 'Eau de source.', 'https://fr.openfoodfacts.org/produit/3274080005003/eau-de-source-24-cristaline', 150, NULL, '0.000', '0.00', '0.00', '0.00', '0.00', '0.00', '0.03', '0.01'),
-(10, 'Huile d''olive bio Fruitée vert Cauvin', NULL, 2, 'D', 'D''huiles Biologiques à déguster sans rn5dération. HUILE D''OLIVE VIERGE EXTRA BIO', 'https://fr.openfoodfacts.org/produit/3336590083787/huile-d-olive-bio-fruitee-vert-cauvin', 75, 900, '100.000', '17.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(11, 'Big Mac', NULL, 3, 'C', 'Pain spécial, steaks hachés, salade, oignon, cornichon, fromage fondu, sauce, (selon le site) En quantités inconnues : Anhydride sulfureux et sulfites, Gluten (blé), Graine de sésame, Lait, Oeufs, Moutarde.', 'https://fr.openfoodfacts.org/produit/2000000002603/big-mac-mcdonald-s', 220, 230, '12.000', '4.50', '19.00', '3.90', '1.40', '12.00', '1.00', '0.39'),
-(12, 'Le supérieur cuit à l''étouffée', NULL, 4, 'C', 'Le supérieur cuit à l''étouffée', 'https://fr.openfoodfacts.org/produit/3095756214013/le-superieur-cuit-a-l-etouffee-6tr-fleury-michon', 240, 117, '2.800', '1.00', '0.70', '0.70', '0.50', '22.00', '1.80', '0.71');
+INSERT INTO CATEG_NUTRISCORE (CN_ID, CN_LIBELLE) VALUES
+(1, 'Autre'),
+(2, 'Matières grasses'),
+(3, 'Boissons'),
+(4, 'Fromage'),
+(5, 'Eaux minérales et eaux de source');
+
+INSERT INTO PRODUIT (PRO_ID, PRO_LIBELLE, COD_ID, NOVA_ID, NUT_CODE, PRO_INGREDIENT, PRO_LIEN, PRO_QUANTITE, PRO_ENERGIE, PRO_MATIEREGRASSE, PRO_ACIDEGRAS, PRO_GLUCIDE, PRO_SUCRE, PRO_FIBRE, PRO_PROTEINE, PRO_SEL, PRO_SODIUM, PRO_FRUIT, PROD_ID_CATEG_NUTRISCORE) VALUES
+(1, 'Teurgoule de la Sée', NULL, 1, 'B', NULL, 'https://fr.openfoodfacts.org/produit/3488790000214/teurgoule-de-la-see-fabriquee-a-la-ferme-du-gaec-muris', 440, 122, '3.500', '2.30', '18.30', '0.00', '0.00', '3.90', '0.04', '0.02', '0.0', '1'),
+(2, 'Nutella', NULL, 4, 'E', 'Sucre, huile de palme, noisettes 13%, cacao maigre 7,4%, lait écrémé en poudre 6,6%, lactoserum en poudre, émulsifiants : lécithines [soja], vanilline.', 'https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero', 750, 544, '31.600', '11.00', '57.60', '56.80', '0.00', '6.30', '0.11', '0.04', '13', '1'),
+(3, 'La classique nature', NULL, 3, 'D', 'Pommes de terre, huile de tournesol, sel', 'https://fr.openfoodfacts.org/produit/3336971209164/la-classique-nature-135-g-vico', 135, 525, '34.000', '2.80', '46.70', '0.60', '0.00', '5.90', '1.30', '0.51', '0.0', '1'),
+(4, 'Dolce Pizza Regina', NULL, 4, 'C', 'Garniture 60 % : mozzarella en copeaux 28 %, sauce tomate 27 % (purée de tomate, eau, farine de blé, sel), chiffonnade de jambon cuit 22 % (jambon de porc, eau, sel, dextrose, sirop de glucose, stabilisant : E451, arômes naturels (dont gluten), gélifiant ', 'https://fr.openfoodfacts.org/produit/3242272340850/dolce-pizza-regina-sodebo', 380, 181, '4.600', '2.90', '22.20', '2.10', '0.00', '10.90', '1.46', '0.58', '20', '1'),
+(5, 'Poulet Fermier Label Rouge de Loué', 1, 1, 'B', 'Poulet fermier 100%', 'https://fr.openfoodfacts.org/produit/0217013081678/poulet-fermier-label-rouge-de-loue', 1448, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0', '1'),
+(6, 'Camembert de Normandie', 2, 3, 'D', 'lait cru', 'https://fr.openfoodfacts.org/produit/3023260028437/camembert-de-normandie-22-mg-jort', 250, 277, '21.000', '15.50', '0.00', '0.00', NULL, '20.00', '1.55', '0.61', '0.0', '4'),
+(7, 'Riz Jasmin Extra Parfumé', NULL, 1, 'A', 'Riz Thaï', 'https://fr.openfoodfacts.org/produit/3364699010434/riz-jasmin-extra-parfume-oiseaux-celestes', 1000, 338, '0.900', '0.40', '76.00', '0.00', '2.90', '6.60', '0.00', '0.00', '0', '1'),
+(8, 'Tagliatelles', NULL, 3, 'A', '\r\nSemoule de blé dur, œufs (19,36 %).', 'https://fr.openfoodfacts.org/produit/8076808201293/tagliatelles-barilla', 500, 373, '4.000', '1.00', '66.00', '3.00', '4.00', '14.00', '0.00', '0.00', '0.0', '1'),
+(9, 'Eau de source Cristaline', 3, 1, 'A', 'Eau de source.', 'https://fr.openfoodfacts.org/produit/3274080005003/eau-de-source-24-cristaline', 150, NULL, '0.000', '0.00', '0.00', '0.00', '0.00', '0.00', '0.03', '0.01', '0.0', '5'),
+(10, 'Huile d''olive bio Fruitée vert Cauvin', NULL, 2, 'D', 'D''huiles Biologiques à déguster sans rn5dération. HUILE D''OLIVE VIERGE EXTRA BIO', 'https://fr.openfoodfacts.org/produit/3336590083787/huile-d-olive-bio-fruitee-vert-cauvin', 75, 900, '100.000', '17.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.0', '2'),
+(11, 'Big Mac', NULL, 3, 'C', 'Pain spécial, steaks hachés, salade, oignon, cornichon, fromage fondu, sauce, (selon le site) En quantités inconnues : Anhydride sulfureux et sulfites, Gluten (blé), Graine de sésame, Lait, Oeufs, Moutarde.', 'https://fr.openfoodfacts.org/produit/2000000002603/big-mac-mcdonald-s', 220, 230, '12.000', '4.50', '19.00', '3.90', '1.40', '12.00', '1.00', '0.39', '0.0', '1'),
+(12, 'Le supérieur cuit à l''étouffée', NULL, 4, 'C', 'Le supérieur cuit à l''étouffée', 'https://fr.openfoodfacts.org/produit/3095756214013/le-superieur-cuit-a-l-etouffee-6tr-fleury-michon', 240, 117, '2.800', '1.00', '0.70', '0.70', '0.50', '22.00', '1.80', '0.71', '0.0', '1');
 
 INSERT INTO CONTENIR (PRO_ID, ADD_ID) VALUES
 (2, 1),
