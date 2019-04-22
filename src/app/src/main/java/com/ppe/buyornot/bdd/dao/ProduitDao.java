@@ -53,9 +53,13 @@ public class ProduitDao implements IEntityManager<Produit> {
 	}
 
 	public List<Produit> getAll() {
+		return getAll(FIELD_ID);
+	}
+
+	public List<Produit> getAll(String orderbyClause) {
 		List<Produit> produits = new ArrayList<>();
 
-		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+		Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY "+orderbyClause, null);
 		while (c.moveToNext()) {
 			Produit p = new Produit();
 			p.createFromCursor(c, this.context);

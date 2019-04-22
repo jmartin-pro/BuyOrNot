@@ -8,6 +8,13 @@
     <string name="cancel">Annuler</string>
     <string name="delete">Supprimer</string>
 
+    <string name="sort">Trier</string>
+    <string name="sortRecent">Trier par ordre d\'ajout</string>
+    <string name="sortLibelle">Trier par libéllé</string>
+    <string name="sortNovaNutriscore">Trier nova et nutriscore</string>
+    <string name="sortNutriscore">Trier par nutriscore</string>
+    <string name="sortNova">Trier par nova</string>
+
     <string name="libelle">Libellé</string>
     <string name="quantite">Quantité</string>
     <string name="ingredients">Ingrédients</string>

@@ -37,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void updateRecyclerView() {
+		updateRecyclerView(ProduitDao.FIELD_ID + " DESC");
+	}
+
+	private void updateRecyclerView(String orderByClause) {
 		ProduitDao produitDao = new ProduitDao(this);
-		this.produits = produitDao.getAll();
+		this.produits = produitDao.getAll(orderByClause);
 
 		ProduitRecyclerAdapter adapter = new ProduitRecyclerAdapter(this.produits, new RowClickListener(), this);
 		this.recyclerView.setAdapter(adapter);
@@ -74,6 +78,62 @@ public class MainActivity extends AppCompatActivity {
 				Intent intent = new Intent(MainActivity.this, AddProduitActivity.class);
 				startActivityForResult(intent, ACTIVITY_CODE_ADD_PRODUIT);
 				return true;
+
+			case R.id.action_sortRecent:
+				if (item.isChecked())
+					item.setChecked(false);
+				else {
+					item.setChecked(true);
+					updateRecyclerView();
+				}
+
+				return true;
+
+
+			case R.id.action_sortLibelle:
+				if (item.isChecked())
+					item.setChecked(false);
+				else {
+					item.setChecked(true);
+					updateRecyclerView(ProduitDao.FIELD_LIBELLE);
+				}
+
+				return true;
+
+
+			case R.id.action_sortNovaNutriscore:
+				if (item.isChecked())
+					item.setChecked(false);
+				else {
+					item.setChecked(true);
+					updateRecyclerView(ProduitDao.FIELD_ID_NOVA + ", " + ProduitDao.FIELD_ID_NUTRISCORE);
+				}
+
+				return true;
+
+
+			case R.id.action_sortNova:
+				if (item.isChecked())
+					item.setChecked(false);
+				else {
+					item.setChecked(true);
+					updateRecyclerView(ProduitDao.FIELD_ID_NOVA);
+				}
+
+				return true;
+
+
+			case R.id.action_sortNutriscore:
+				if (item.isChecked())
+					item.setChecked(false);
+				else {
+					item.setChecked(true);
+					updateRecyclerView(ProduitDao.FIELD_ID_NUTRISCORE);
+				}
+
+				return true;
+
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}

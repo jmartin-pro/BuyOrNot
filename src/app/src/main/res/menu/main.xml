@@ -2,10 +2,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:orderInCategory="100"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom|withText">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+
+                <item
+                    android:checked="true"
+                    android:id="@+id/action_sortRecent"
+                    android:title="@string/sortRecent" />
+
+                <item
+                    android:id="@+id/action_sortLibelle"
+                    android:title="@string/sortLibelle" />
+
+                <item
+                    android:id="@+id/action_sortNovaNutriscore"
+                    android:title="@string/sortNovaNutriscore" />
+
+                <item
+                    android:id="@+id/action_sortNutriscore"
+                    android:title="@string/sortNutriscore" />
+
+                <item
+                    android:id="@+id/action_sortNova"
+                    android:title="@string/sortNova" />
+            </group>
+        </menu>
+    </item>
+
+    <item
         android:id="@+id/action_add"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="100"
         android:title="@string/add"
         app:showAsAction="ifRoom|withText" />
-
 </menu>
