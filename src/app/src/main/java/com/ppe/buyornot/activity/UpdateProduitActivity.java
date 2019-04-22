@@ -46,6 +46,7 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 		this.editTextSel.setText(""+produit.getSel());
 		this.editTextSodium.setText(""+produit.getSodium());
 		this.editTextProteine.setText(""+produit.getProteine());
+		this.editTextFruit.setText(""+produit.getFruits());
 
 		if(produit.getCodeEmballeur() != null) {
 			for (int i = 0; i < this.codeEmballeurs.size(); i++) {

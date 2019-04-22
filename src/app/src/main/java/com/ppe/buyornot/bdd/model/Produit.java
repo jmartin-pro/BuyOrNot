@@ -24,6 +24,7 @@ public class Produit implements IEntity {
 	private float proteine;
 	private float sel;
 	private float sodium;
+	private float fruits;
 	private List<Additif> additifs;
 	private CodeEmballeur codeEmballeur;
 	private List<Marque> marques;
@@ -58,6 +59,7 @@ public class Produit implements IEntity {
 		this.proteine = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_PROTEINE));
 		this.sel = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SEL));
 		this.sodium = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SODIUM));
+		this.fruits = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_FRUITS));
 
 		this.nutriscore = new Nutriscore(cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_ID_NUTRISCORE)));
 
@@ -180,6 +182,14 @@ public class Produit implements IEntity {
 
 	public void setSodium(float sodium) {
 		this.sodium = sodium;
+	}
+
+	public float getFruits() {
+		return fruits;
+	}
+
+	public void setFruits(float fruits) {
+		this.fruits = fruits;
 	}
 
 	public List<Additif> getAdditifs() {

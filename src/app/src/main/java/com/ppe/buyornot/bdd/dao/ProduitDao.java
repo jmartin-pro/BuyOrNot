@@ -30,6 +30,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 	public static final String FIELD_PROTEINE = "PRO_PROTEINE";
 	public static final String FIELD_SEL = "PRO_SEL";
 	public static final String FIELD_SODIUM = "PRO_SODIUM";
+	public static final String FIELD_FRUITS = "PRO_FRUIT";
 	private static final String TABLE_NAME = "PRODUIT";
 
 	private final Context context;
@@ -135,6 +136,7 @@ public class ProduitDao implements IEntityManager<Produit> {
 		contentValues.put(FIELD_PROTEINE, produit.getProteine());
 		contentValues.put(FIELD_SEL, produit.getSel());
 		contentValues.put(FIELD_SODIUM, produit.getSodium());
+		contentValues.put(FIELD_FRUITS, produit.getFruits());
 
 		return contentValues;
 	}

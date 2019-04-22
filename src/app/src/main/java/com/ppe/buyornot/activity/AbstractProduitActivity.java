@@ -40,8 +40,10 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 	protected EditText editTextSel;
 	protected EditText editTextSodium;
 	protected EditText editTextProteine;
+	protected EditText editTextFruit;
 	protected Spinner spinnerCodeEmballeur;
 	protected Spinner spinnerNova;
+	protected Spinner spinnerCategNutriscore;
 
 	protected List<Nova> novas;
 	protected List<CodeEmballeur> codeEmballeurs;
@@ -55,6 +57,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 
 		this.initNovaSpinner();
 		this.initCodeEmballeurSpinner();
+		this.initCategNutriscore();
 	}
 
 	private void findViews() {
@@ -72,8 +75,10 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		this.editTextSel = findViewById(R.id.sel);
 		this.editTextSodium = findViewById(R.id.sodium);
 		this.editTextProteine = findViewById(R.id.proteine);
+		this.editTextFruit = findViewById(R.id.fruits);
 		this.spinnerCodeEmballeur = findViewById(R.id.codeEmballeur);
 		this.spinnerNova = findViewById(R.id.nova);
+		this.spinnerCategNutriscore = findViewById(R.id.categNutriscore);
 	}
 
 	private void initNovaSpinner() {
@@ -105,6 +110,20 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		spinnerCodeEmballeur.setAdapter(codeEmballeurAdapter);
 	}
 
+	private void initCategNutriscore() {
+		/*NovaDao novaDao = new NovaDao(this);
+		this.novas = novaDao.getAll();
+
+		List<String> novasStr = new ArrayList<>();
+		for(Nova n : this.novas)
+			novasStr.add(n.getLibelle());
+
+		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, novasStr);
+		novaDao.close();
+
+		spinnerNova.setAdapter(novaAdapter);*/
+	}
+
 	protected Produit getProduit() {
 		if(this.editTextLibelle.getText().toString().isEmpty() ||
 			this.editTextQuantite.getText().toString().isEmpty() ||
@@ -118,7 +137,8 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 			this.editTextSucres.getText().toString().isEmpty() ||
 			this.editTextSel.getText().toString().isEmpty() ||
 			this.editTextSodium.getText().toString().isEmpty() ||
-			this.editTextProteine.getText().toString().isEmpty()) {
+			this.editTextProteine.getText().toString().isEmpty() ||
+			this.editTextFruit.getText().toString().isEmpty()) {
 
 			return null;
 		}
@@ -138,6 +158,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		produit.setSel(Float.parseFloat(editTextSel.getText().toString()));
 		produit.setSodium(Float.parseFloat(editTextSodium.getText().toString()));
 		produit.setProteine(Float.parseFloat(editTextProteine.getText().toString()));
+		produit.setFruits(Float.parseFloat(editTextFruit.getText().toString()));
 
 		if(spinnerCodeEmballeur.getSelectedItemPosition() == 0)
 			produit.setCodeEmballeur(null);
