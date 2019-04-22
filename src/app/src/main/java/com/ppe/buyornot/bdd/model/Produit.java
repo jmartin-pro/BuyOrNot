@@ -7,6 +7,7 @@ import com.ppe.buyornot.bdd.dao.CategNutriscoreDao;
 import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
 import com.ppe.buyornot.bdd.dao.NovaDao;
 import com.ppe.buyornot.bdd.dao.ProduitDao;
+import com.ppe.buyornot.util.NutriscoreCalculator;
 
 import java.util.List;
 
@@ -76,6 +77,10 @@ public class Produit implements IEntity {
 		NovaDao novaDao = new NovaDao(context);
 		this.nova = novaDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_NOVA)));
 		novaDao.close();
+	}
+
+	public void updateNutriscore() {
+		this.nutriscore = NutriscoreCalculator.getNutriscore(this);
 	}
 
 	public int getId() {
@@ -310,6 +315,4 @@ public class Produit implements IEntity {
 		this.allergenes = allergenes;
 	}
 
-	public void updateNutriscore() {
-	}
 }

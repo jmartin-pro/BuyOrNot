@@ -172,7 +172,6 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		produit.setCategNutriscore(categNutriscore.get(spinnerCategNutriscore.getSelectedItemPosition()));
 
 		produit.updateNutriscore();
-		produit.setNutriscore(new Nutriscore("A"));
 
 		produit.setNova(novas.get(spinnerNova.getSelectedItemPosition()));
 
