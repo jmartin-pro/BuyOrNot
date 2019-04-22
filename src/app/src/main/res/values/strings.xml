@@ -24,4 +24,6 @@
     <string name="codeEmballeur">Code emballeur</string>
     <string name="nutriScore">Nutriscore</string>
     <string name="nova">Nova</string>
+
+    <string name="codeEmballeurNull">Sélectionner un code emballeur</string>
 </resources>

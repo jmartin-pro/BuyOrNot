@@ -3,6 +3,8 @@ package com.ppe.buyornot.bdd.model;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
+
 public class CodeEmballeur implements IEntity {
 
 	private int id;
@@ -14,7 +16,8 @@ public class CodeEmballeur implements IEntity {
 
 	@Override
 	public void createFromCursor(Cursor cursor, Context context) {
-
+		this.id = cursor.getInt(cursor.getColumnIndex(CodeEmballeurDao.FIELD_ID));
+		this.libelle = cursor.getString(cursor.getColumnIndex(CodeEmballeurDao.FIELD_LIBELLE));
 	}
 
 	public int getId() {

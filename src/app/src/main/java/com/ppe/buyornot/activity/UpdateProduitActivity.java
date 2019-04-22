@@ -46,8 +46,16 @@ public class UpdateProduitActivity extends AbstractProduitActivity {
 		this.editTextSel.setText(""+produit.getSel());
 		this.editTextSodium.setText(""+produit.getSodium());
 		this.editTextProteine.setText(""+produit.getProteine());
-		this.editTextCodeEmballeur.setText((produit.getCodeEmballeur() != null) ? ""+produit.getCodeEmballeur() : "");
 
+		if(produit.getCodeEmballeur() != null) {
+			for (int i = 0; i < this.codeEmballeurs.size(); i++) {
+				if (this.codeEmballeurs.get(i).getId() == produit.getCodeEmballeur().getId()) {
+					this.spinnerCodeEmballeur.setSelection(i+1);
+
+					break;
+				}
+			}
+		}
 
 		for(int i = 0 ; i < this.novas.size() ; i++) {
 			if(this.novas.get(i).getId() == produit.getNova().getId()) {

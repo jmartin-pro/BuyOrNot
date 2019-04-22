@@ -3,6 +3,7 @@ package com.ppe.buyornot.bdd.model;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
 import com.ppe.buyornot.bdd.dao.NovaDao;
 import com.ppe.buyornot.bdd.dao.ProduitDao;
 
@@ -59,6 +60,10 @@ public class Produit implements IEntity {
 		this.sodium = cursor.getFloat(cursor.getColumnIndex(ProduitDao.FIELD_SODIUM));
 
 		this.nutriscore = new Nutriscore(cursor.getString(cursor.getColumnIndex(ProduitDao.FIELD_ID_NUTRISCORE)));
+
+		CodeEmballeurDao codeEmballeurDao = new CodeEmballeurDao(context);
+		this.codeEmballeur = codeEmballeurDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_CODE_EMBALLEUR)));
+		codeEmballeurDao.close();
 
 		NovaDao novaDao = new NovaDao(context);
 		this.nova = novaDao.get(cursor.getInt(cursor.getColumnIndex(ProduitDao.FIELD_ID_NOVA)));

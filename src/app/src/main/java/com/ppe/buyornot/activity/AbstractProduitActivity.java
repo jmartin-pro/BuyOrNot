@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.ppe.buyornot.R;
+import com.ppe.buyornot.bdd.dao.CodeEmballeurDao;
 import com.ppe.buyornot.bdd.dao.NovaDao;
+import com.ppe.buyornot.bdd.model.CodeEmballeur;
 import com.ppe.buyornot.bdd.model.Nova;
 import com.ppe.buyornot.bdd.model.Nutriscore;
 import com.ppe.buyornot.bdd.model.Produit;
@@ -38,29 +40,21 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 	protected EditText editTextSel;
 	protected EditText editTextSodium;
 	protected EditText editTextProteine;
-	protected EditText editTextCodeEmballeur;
+	protected Spinner spinnerCodeEmballeur;
 	protected Spinner spinnerNova;
 
 	protected List<Nova> novas;
+	protected List<CodeEmballeur> codeEmballeurs;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_produit);
 
-		findViews();
+		this.findViews();
 
-		NovaDao novaDao = new NovaDao(this);
-		novas = novaDao.getAll();
-
-		List<String> novasStr = new ArrayList<>();
-		for(Nova n : this.novas)
-			novasStr.add(n.getLibelle());
-
-		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, novasStr);
-		novaDao.close();
-
-		spinnerNova.setAdapter(novaAdapter);
+		this.initNovaSpinner();
+		this.initCodeEmballeurSpinner();
 	}
 
 	private void findViews() {
@@ -78,8 +72,37 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		this.editTextSel = findViewById(R.id.sel);
 		this.editTextSodium = findViewById(R.id.sodium);
 		this.editTextProteine = findViewById(R.id.proteine);
-		this.editTextCodeEmballeur = findViewById(R.id.codeEmballeur);
+		this.spinnerCodeEmballeur = findViewById(R.id.codeEmballeur);
 		this.spinnerNova = findViewById(R.id.nova);
+	}
+
+	private void initNovaSpinner() {
+		NovaDao novaDao = new NovaDao(this);
+		this.novas = novaDao.getAll();
+
+		List<String> novasStr = new ArrayList<>();
+		for(Nova n : this.novas)
+			novasStr.add(n.getLibelle());
+
+		ArrayAdapter<String> novaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, novasStr);
+		novaDao.close();
+
+		spinnerNova.setAdapter(novaAdapter);
+	}
+
+	private void initCodeEmballeurSpinner() {
+		CodeEmballeurDao codeEmballeurDao = new CodeEmballeurDao(this);
+		this.codeEmballeurs = codeEmballeurDao.getAll();
+
+		List<String> codeEmballeurStr = new ArrayList<>();
+		codeEmballeurStr.add(this.getString(R.string.codeEmballeurNull));
+		for(CodeEmballeur ce : this.codeEmballeurs)
+			codeEmballeurStr.add(ce.getLibelle());
+
+		ArrayAdapter<String> codeEmballeurAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, codeEmballeurStr);
+		codeEmballeurDao.close();
+
+		spinnerCodeEmballeur.setAdapter(codeEmballeurAdapter);
 	}
 
 	protected Produit getProduit() {
@@ -95,8 +118,7 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 			this.editTextSucres.getText().toString().isEmpty() ||
 			this.editTextSel.getText().toString().isEmpty() ||
 			this.editTextSodium.getText().toString().isEmpty() ||
-			this.editTextProteine.getText().toString().isEmpty() ||
-			this.editTextCodeEmballeur.getText().toString().isEmpty()) {
+			this.editTextProteine.getText().toString().isEmpty()) {
 
 			return null;
 		}
@@ -116,11 +138,17 @@ public abstract class AbstractProduitActivity extends AppCompatActivity {
 		produit.setSel(Float.parseFloat(editTextSel.getText().toString()));
 		produit.setSodium(Float.parseFloat(editTextSodium.getText().toString()));
 		produit.setProteine(Float.parseFloat(editTextProteine.getText().toString()));
-		//TODO : code emballeur -> produit.setLibelle(Float.parseFloat(editTextLibelle.getText().toString()));
+
+		if(spinnerCodeEmballeur.getSelectedItemPosition() == 0)
+			produit.setCodeEmballeur(null);
+		else {
+			produit.setCodeEmballeur(codeEmballeurs.get(spinnerCodeEmballeur.getSelectedItemPosition()-1));
+		}
+
 		produit.updateNutriscore();
 		produit.setNutriscore(new Nutriscore("A"));
 
-		produit.setNova(novas.get((int) spinnerNova.getSelectedItemId()));
+		produit.setNova(novas.get(spinnerNova.getSelectedItemPosition()));
 
 		return produit;
 	}
