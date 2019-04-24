@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{BetterDocument}[2019/01/24 Article++, V0.2.0]
+\ProvidesClass{BetterDocument}[2019/04/22 BetterDocument, V0.10.0]
 
-% Load defautl class style  
+% Load defautl class style
 \DeclareOption*{\let\classname\CurrentOption}
 \ProcessOptions\relax
 
@@ -12,27 +12,34 @@
 \LoadClass[a4paper, 11pt]{\classname}
 
 % extensions
-\RequirePackage[utf8x]{inputenc}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{natbib}
-\RequirePackage[frenchb]{babel}
-\RequirePackage{mathptmx}
+\RequirePackage[french]{babel}
 \RequirePackage[top=2.5cm, left=2.5cm, right=2.5cm, bottom=2.5cm]{geometry}
 \RequirePackage{xcolor}
+\RequirePackage{mathptmx}
 \RequirePackage{titlesec}
 \RequirePackage{sectsty}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
 \RequirePackage[colorlinks]{hyperref}
+\RequirePackage{bookmark}
+\RequirePackage[section]{placeins}
+\RequirePackage[labelfont=bf]{caption}
+\RequirePackage{float}
 
 % couleurs
-\definecolor{primarycolor}{HTML}{1391f2}
-\definecolor{secondarycolor}{HTML}{1182D9}
-\definecolor{thirdcolor}{HTML}{0D68AD}
+\definecolor{primarycolor}{HTML}{5f445a}
+\definecolor{secondarycolor}{HTML}{57445F}
+\definecolor{thirdcolor}{HTML}{332C3D}
+\definecolor{links}{HTML}{3366BB}
 
 \hypersetup{
-    linkcolor = {black}
+    urlcolor = {links},
+	linkcolor = {links}
 }
+
+\urlstyle{same}
 
 % style des sections
 \titleformat{\chapter}
@@ -49,7 +56,7 @@
 
 % numerotation
 \renewcommand\thesection{\Alph{section}}
-\renewcommand\thesubsection{\roman{subsection}} 
+\renewcommand\thesubsection{\roman{subsection}}
 
 % commandes page de garde
 \newcommand{\who}[1]{\renewcommand{\who}{#1}}
@@ -63,7 +70,7 @@
     \null%
     \vfill%
     \pagenumbering{gobble}%
-    
+
     \begin{center}%
         {\fontsize{48}{58}\selectfont\title}\\%
         \vspace{1em}%
