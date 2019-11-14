@@ -26,7 +26,7 @@ Tout d’abord vous devez créer une BDD SQLite pour effectuer dans un premier t
 
 Le projet comporte 3 dossiers :
 - doc → Regroupe les différents documents importants du projet
-- sql → Contient l'historique de tous les scripts SQL qui ont modifié la BDD. (Lien symbolique, peut ne pas marcher sur windows. Aller à src/app/src/main/assets)
+- sql → Contient l'historique de tous les scripts SQL qui ont modifié la BDD. (Lien symbolique, peut ne pas marcher sur Windows. Aller à src/app/src/main/assets)
 - src → Contient le code source de l'application
 
 Le Trello utilisé pour le projet est disponible ici : https://trello.com/b/HCXYRgZp/buy-or-not
