@@ -2,7 +2,7 @@
 
 Open Food Facts est une base de données de produits alimentaires qui répertorie les ingrédients, les allergènes, la composition nutritionnelle et toutes les informations présentes sur les étiquettes des aliments.
 
-Actuellement la gestion de cette base de donnée s’effectue sans application dédié, manuellement par l’administrateur de base de donnée de l’association.
+Actuellement la gestion de cette base de données s’effectue sans application dédié, manuellement par l’administrateur de base de donnée de l’association.
 
 Devant le succès de cette application et souhaitant que cette base de données soit collaborative, libre et ouverte des produits alimentaires du monde entier, Open Food Facts a décidé de créer une application mobile Android sous Android Studio pour la gestion de sa base de données.
 
